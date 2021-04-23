@@ -11,7 +11,6 @@ const currentTab = (history,path) => {
 }
 
 const Menu = ({history}) => {
-    console.log(isAuthenticated())
     return (
         <div>
             <ul className="nav nav-tabs bg-dark">

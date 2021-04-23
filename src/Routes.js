@@ -9,6 +9,10 @@ import Profile from "./user/Profile"
 import UserDashBoard from "./user/UserDashBoard"
 import AdminDashBoard from "./user/AdminDashBoard"
 import AddCategory from "./admin/AddCategory"
+import ManageCategories from './admin/ManageCategories'
+import AddProduct from './admin/AddProduct'
+import ManageProducts from './admin/ManageProducts'
+import UpdateProduct from './admin/UpdateProduct'
 
 
 export default function Routes() {
@@ -22,6 +26,10 @@ export default function Routes() {
             <AdminRoutes path="/admin/dashboard" exact component={AdminDashBoard}/>
             <PrivateRoutes path="/user/dashboard" exact component={UserDashBoard}/>
             <AdminRoutes path="/admin/create/category" exact component={AddCategory}/>
+            <AdminRoutes path="/admin/categories" exact component={ManageCategories}/>
+            <AdminRoutes path="/admin/create/product" exact component={AddProduct}/>
+            <AdminRoutes path="/admin/products" exact component={ManageProducts}/>
+            <AdminRoutes path="/admin/product/update/:productId" exact component={UpdateProduct}/>
         </Switch>
 
        </BrowserRouter>
