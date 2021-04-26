@@ -2,19 +2,36 @@ import { API } from "../../backend";
 
 
 export const createCategory = async (userId,token,name) => {
+   
     return fetch(`${API}category/create/${userId}`,{
         method:'POST',
         headers:{
-            Accept:"appliataion/json",
+            Accept:"application/json",
             "Content-type":"application/json",
             Authorization:`Bearer ${token}`
         },
+        
         body:JSON.stringify(name)
     })
     .then(res => {
          return res.json()
     })
     .catch((e)=>{
+        console.log(e);
+    })
+}
+
+//get category..
+export const getCategory = (categoryId) => {
+    return fetch(`${API}category/${categoryId}`,{
+        method:"GET",
+        
+    }
+    )
+    .then(data => {
+        return data.json()
+    })
+    .catch(e=>{
         console.log(e);
     })
 }
@@ -32,6 +49,41 @@ export const getAllCategories = () => {
     })
 }
 
+// delete category:
+export const deleteCategory = (categoryId,userId,token) => {
+    return fetch(`${API}category/${categoryId}/${userId}`,{
+        method:'DELETE',
+        headers:{
+            Accept:"application/json",
+            Authorization:`Bearer ${token}`
+        }
+    })
+    .then(data=>{
+        return data.json()
+    })
+    .catch(e => {
+        console.log(e);
+    })
+}
+
+// update category:
+export const updateCategory = (categoryId,userId,token,name) => {
+    return fetch(`${API}category/${categoryId}/${userId}`,{
+        method:"PUT",
+        headers:{
+            Accept:"application/json",
+            "Content-Type":"application/json",
+            Authorization:`Bearer ${token}`
+        },
+        body:JSON.stringify(name)
+    })
+    .then(data=>{
+        return data.json()
+    })
+    .catch(e=>{
+        console.log(e);
+    })
+}
 
 //product calls:
 
@@ -40,7 +92,7 @@ export const createProduct = (userId,token,product) => {
     return fetch(`${API}product/create/${userId}`,{
         method:"POST",
         headers:{
-            Accept:"appliataion/json",
+            Accept:"application/json",
             Authorization:`Bearer ${token}`
         },
         body:product
